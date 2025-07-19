@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Love Story — Nishu & Fuggan 💜</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --lavender1: #b4acf7;
+      --lavender2: #d6c6f8;
+      --lavender3: #a9bee9;
+      --heart-color: #ec4899;
+      --bubble-color: rgba(188, 218, 255, 0.48);
+      --text-color: #4b1e71;
+      --link-color: #7e5de4;
+      --link-hover-color: #bb3b7d;
+      --background-glow: #f9f0ff;
+      --button-bg: linear-gradient(90deg, #a18cd1 0%, #fbc2eb 100%);
+      --button-shadow: #caa0dd7c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--lavender1), var(--lavender2) 50%, var(--lavender3));
+      min-height: 100vh; overflow-x: hidden;
+      color: var(--text-color);
+      position: relative;
+    }
+    .container {
+      max-width: 470px;
+      margin: 80px auto 40px auto;
+      background: rgba(255,255,255,0.92);
+      border-radius: 24px;
+      box-shadow: 0 8px 28px rgba(164,138,218,0.32);
+      padding: 24px 24px 36px 24px;
+      position: relative;
+      z-index: 10;
+    }
+    .section-header {
+      position: fixed; top: 7px; left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(12px);
+      padding: 10px 20px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--link-hover-color);
+      border-radius: 24px;
+      box-shadow: 0 4px 12px rgba(204,117,186,0.3);
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+      letter-spacing: 2px;
+      user-select: none;
+      text-align: center;
+      width: 90%;
+      max-width: 470px;
+    }
+    nav ul {
+      display: flex; justify-content: center; list-style: none; padding: 0; margin: 0 0 24px 0; flex-wrap: wrap; gap: 10px;
+    }
+    nav ul li { flex: 1 1 calc(50% - 12px); max-width: 45%; }
+    nav ul li a {
+      display: inline-block;
+      padding: 12px 0;
+      background: var(--background-glow);
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--link-color);
+      text-decoration: none;
+      box-shadow: 0 2px 7px rgba(143,119,204,0.24);
+      transition: background-color 0.25s, color 0.25s;
+      text-align: center;
+      user-select: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      background-color: #d6b5e9;
+      color: var(--link-hover-color);
+      border-color: var(--link-hover-color);
+    }
+    section {
+      display: none;
+      font-size: 1.05rem;
+      line-height: 1.55;
+      color: var(--text-color);
+      padding: 0 10px;
+      user-select: text;
+      min-height: 400px;
+    }
+    section.active { display: block; animation: fadeInContent 0.6s ease forwards; }
+    @keyframes fadeInContent { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--link-hover-color);
+      font-weight: 800;
+      font-size: 1.7rem;
+      margin-bottom: 15px;
+      text-align: center;
+      letter-spacing: 1.5px;
+    }
+    .section-text {
+      white-space: pre-wrap;
+      padding: 10px 12px;
+      background: #f3eaffdd;
+      border-radius: 14px;
+      box-shadow: inset 0 4px 15px #e1c6fa99;
+      max-height: 600px; overflow-y: auto;
+      font-weight: 500;
+    }
+    .floating-hearts, .floating-bubbles, .floating-sparkles {
+      pointer-events: none;
+      position: fixed;
+      width: 100vw; height: 100vh;
+      top: 0; left: 0; z-index: 1;
+    }
+    .heart {
+      position: absolute; width: 25px; height: 25px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ec4899"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4 7.86 4 9.13 4.81 10 6.09 10.87 4.81 12.14 4 13.5 4 16 4 18 6 18 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
+      background-size: contain; opacity: 0.8;
+      filter: drop-shadow(0 0 2px #db418a);
+      animation-timing-function: linear; animation-iteration-count: infinite;
+    }
+    @keyframes floatUp { 0% { transform: translateY(120vh) scale(1) rotate(0deg); opacity: 0; }
+      10% { opacity: 1;} 100% { transform: translateY(-20vh) scale(1.2) rotate(720deg); opacity: 0; } }
+    .bubble {
+      position: absolute; border-radius: 50%;
+      background: var(--bubble-color);
+      filter: drop-shadow(0 0 5px #a1c5f7);
+      opacity: 0.6; animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      backdrop-filter: blur(2px); mix-blend-mode: screen;
+    }
+    @keyframes bubbleFloat { 0% { transform: translateY(110vh) scale(1); opacity: 0; }
+      10% { opacity: 0.35;} 100% { transform: translateY(-5vh) scale(1.4); opacity: 0; } }
+    .sparkle {
+      position: absolute;
+      width: 6px; height: 6px;
+      border-radius: 50%; background: #e6d7ff;
+      opacity: 0.9; filter: drop-shadow(0 0 8px #bc94ff);
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      animation-name: sparkleShine;
+    }
+    @keyframes sparkleShine {
+      0%, 100% { opacity: 0.9; }
+      50% { opacity: 0.1; }
+    }
+    .letter-container {
+      position: relative; max-width: 440px; margin: 20px auto 10px auto;
+      background: #fff; border-radius: 20px;
+      box-shadow: 0 8px 20px rgb(183 121 198 / 0.5);
+      overflow: hidden; user-select: none;
+      padding: 18px 28px 40px 28px;
+    }
+    .letter-page {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500; font-size: 1.05rem; line-height: 1.6; color: var(--text-color);
+      min-height: 290px; overflow-y: auto;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+      border-radius: 20px;
+      padding: 0 6px;
+      background: #f7f0ff;
+      box-shadow: inset 0 0 6px #bb95d8;
+    }
+    .hidden-left {
+      transform: translateX(-100%) rotateY(-25deg); opacity: 0; position: absolute; top: 18px; left: 28px; width: calc(100% - 56px); pointer-events: none;
+    }
+    .hidden-right {
+      transform: translateX(100%) rotateY(25deg); opacity: 0; position: absolute; top: 18px; left: 28px; width: calc(100% - 56px); pointer-events: none;
+    }
+    .visible {
+      transform: translateX(0) rotateY(0deg); opacity: 1; position: relative; pointer-events: auto;
+    }
+    .letter-nav {
+      display: flex; justify-content: space-between;
+      margin-top: 18px; gap: 10px;
+    }
+    .letter-nav button {
+      flex: 1 1 48%;
+      background: var(--button-bg);
+      border: none; border-radius: 34px; color: white;
+      font-size: 1.2rem; font-weight: 700; padding: 10px 0;
+      cursor: pointer; box-shadow: 0 3px 9px var(--button-shadow);
+      transition: background-color 0.3s ease;
+    }
+    .letter-nav button:disabled { background: #967bbce3; cursor: not-allowed; box-shadow: none; }
+    .letter-nav button:hover:not(:disabled) { background: #da7edd; }
+    .proposal-section { margin-top: 30px; text-align: center; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 2rem; color: var(--link-hover-color); user-select: none; }
+    .proposal-btn { margin-top: 12px; background: var(--button-bg); border-radius: 40px; border: none; color: white; font-size: 1.5rem; font-weight: 800; padding: 14px 52px; cursor: pointer; box-shadow: 0 6px 14px var(--button-shadow); transition: transform 0.23s ease, box-shadow 0.25s ease; user-select: none; }
+    .proposal-btn:active { transform: scale(0.91); box-shadow: 0 3px 12px #b378cccc; }
+    @media (max-width: 400px) {
+      .container { margin: 70px 16px 24px 16px; padding: 22px 18px 28px 18px; }
+      nav ul li { max-width: 100%; flex: 1 1 100%; }
+      nav ul li a { font-size: 1.05rem; }
+      .section-header { font-size: 1.5rem; width: 95%; }
+    }
+    .confetti-wrapper {
+      pointer-events: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 10000; overflow: visible; display: none;
+    }
+    .confetti-piece {
+      position: absolute; width: 10px; height: 14px;
+      background-color: var(--heart-color);
+      opacity: 0.85; border-radius: 3px;
+      filter: drop-shadow(0 0 1px #c44886);
+      animation-fill-mode: forwards;
+      animation-name: confetti-fall; animation-timing-function: ease-out;
+    }
+    @keyframes confetti-fall {
+      0% {transform: translateY(-10vh) rotate(0deg); opacity: 1;}
+      100% {transform: translateY(110vh) rotate(360deg); opacity: 0;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Hearts -->
+  <div class="floating-hearts">
+    <div class="heart" style="left: 5vw; animation: floatUp 8s linear infinite; animation-delay: 0s;"></div>
+    <div class="heart" style="left: 30vw; animation: floatUp 10s linear infinite; animation-delay: 3s;"></div>
+    <div class="heart" style="left: 55vw; animation: floatUp 9s linear infinite; animation-delay: 1.5s;"></div>
+    <div class="heart" style="left: 75vw; animation: floatUp 11s linear infinite; animation-delay: 2.4s;"></div>
+    <div class="heart" style="left: 85vw; animation: floatUp 7s linear infinite; animation-delay: 0.8s;"></div>
+  </div>
+  <!-- Floating Bubbles -->
+  <div class="floating-bubbles">
+    <div class="bubble" style="left: 10vw; width: 30px; height: 30px; animation: bubbleFloat 13s linear infinite; animation-delay: 0s;"></div>
+    <div class="bubble" style="left: 40vw; width: 42px; height: 42px; animation: bubbleFloat 12s linear infinite; animation-delay: 2s;"></div>
+    <div class="bubble" style="left: 65vw; width: 28px; height: 28px; animation: bubbleFloat 14s linear infinite; animation-delay: 1s;"></div>
+    <div class="bubble" style="left: 90vw; width: 38px; height: 38px; animation: bubbleFloat 11s linear infinite; animation-delay: 3.6s;"></div>
+  </div>
+  <!-- Floating Sparkles -->
+  <div class="floating-sparkles">
+    <div class="sparkle" style="top: 35vh; left: 16vw; animation: sparkleShine 3s ease-in-out infinite;"></div>
+    <div class="sparkle" style="top: 50vh; left: 23vw; animation-delay: 1s; animation: sparkleShine 2.5s ease-in-out infinite;"></div>
+    <div class="sparkle" style="top: 20vh; left: 40vw; animation-delay: 0.6s; animation: sparkleShine 3.2s ease-in-out infinite;"></div>
+    <div class="sparkle" style="top: 60vh; left: 60vw; animation-delay: 1.4s; animation: sparkleShine 2.7s ease-in-out infinite;"></div>
+    <div class="sparkle" style="top: 18vh; left: 75vw; animation-delay: 2s; animation: sparkleShine 2.9s ease-in-out infinite;"></div>
+  </div>
+  <!-- Section Header -->
+  <div class="section-header" id="sectionHeader">Welcome</div>
+  <div class="container">
+    <h1 style="text-align:center; margin-bottom: 4px; font-family:'Playfair Display', serif;">For My Fuggan 💕</h1>
+    <p style="color:#7e5de4; font-style: italic; text-align: center; margin-bottom: 18px; font-weight: 600;">From your Nishu 💜</p>
+    <nav>
+      <ul>
+        <li><a href="#" class="nav-link active" data-target="journey">Our Journey</a></li>
+        <li><a href="#" class="nav-link" data-target="fight">How We Fight and Solve</a></li>
+        <li><a href="#" class="nav-link" data-target="apologies">Apologies</a></li>
+        <li><a href="#" class="nav-link" data-target="promise">Promise from Me</a></li>
+        <li><a href="#" class="nav-link" data-target="letter">My Letter for You</a></li>
+      </ul>
+    </nav>
+    <!-- Section 1: Our Journey -->
+    <section id="journey" class="active">
+      <h2 class="section-title">Our Journey</h2>
+      <div class="section-text" style="max-height: 430px; overflow-y:auto;">
+        It all started on 15 April at 3:30 PM, when I nervously sent you my first message. I never knew a "hi" would start a story with so many laughs, dreams, and plans for our future. By the very next day, our conversations flowed for hours, and I realized this was something truly special.
+
+        On 16 April, I built up all my courage and confessed how I felt about you. Then, in the quiet of the early morning on 17 April at 5:00 AM, you said “yes”. That moment changed my world forever.
+
+        Since then, we’ve created our own world—full of silly jokes, late-night calls, and the comfort of knowing we always have each other. From Nishu and Fuggan to every special date, our journey is written in little moments that mean everything to me.
+      </div>
+    </section>
+    <!-- Section 2: How We Fight and Solve -->
+    <section id="fight">
+      <h2 class="section-title">How We Fight and Solve</h2>
+      <div class="section-text">
+        No relationship is real without its ups and downs. We’ve argued, sometimes over silly things, sometimes over stuff that hurt. Yet, no matter how tough it got, we always chose to come back to each other.
+
+        Every fight taught us patience. Every apology brought us closer. We never let pride be more important than our bond. For me, fighting is proof that we care, and solving things together is proof that we last.
+
+        With you, every storm turns to sunshine—because we always fix it, together.
+      </div>
+    </section>
+    <!-- Section 3: Apologies -->
+    <section id="apologies">
+      <h2 class="section-title">Apologies</h2>
+      <div class="section-text">
+        I know I mess up sometimes—say the wrong thing, act impatient, or just misunderstand what you needed. For every single time I’ve hurt you, I am truly sorry, Aru. You deserve a boyfriend who learns from his mistakes and tries harder every day.
+
+        Thank you for every “it’s okay”, every time you held on instead of letting go, and every second chance you gave. Our bond grows stronger with every honest apology, every gentle hug, and every time we found our way back, together.
+
+        At the end of every fight—no matter how big or small—we’re always “us” again. That’s what matters most.
+      </div>
+    </section>
+    <!-- Section 4: Promise -->
+    <section id="promise">
+      <h2 class="section-title">Promise from Me</h2>
+      <div class="section-text">
+        My promise to you is simple, Aru: I’ll always be yours. I promise to stay loyal to you, no matter what. My heart, my time, my future—everything is for you.
+
+        I promise, no matter the distance or the challenges, to never let go of us. We will get married and build the future we keep dreaming about—just you and me, laughing, growing, and loving.
+
+        I’ll always call you Fuggan, be your Nishu, and make our love story stronger with every day. Whether it’s through big gestures or small hugs on a video call, I promise you’ll always know how much you mean to me.
+
+        You’ll never face anything alone again, because I’ll be here—today, tomorrow, and always.
+      </div>
+    </section>
+    <!-- Section 5: Flippable Letter -->
+    <section id="letter">
+      <h2 class="section-title">My Letter for You</h2>
+      <div class="letter-container" tabindex="0" aria-label="Romantic letter pages">
+        <div id="letterPage1" class="letter-page visible">
+          Sometimes I wonder how I got so lucky to have you in my life. From the first message on 15 April to this very moment, you’ve made every day brighter—even across all the miles.
+
+          You are my favorite hello, my hardest goodbye, and the calm in my chaos. I might not always say it perfectly, but you’re my home and my greatest adventure.
+        </div>
+        <div id="letterPage2" class="letter-page hidden-right">
+          Thank you for loving me, for calling me Nishu, and for letting me tease you with “Fuggan”!
+
+          I love the way we celebrate the tiniest things, how we laugh through every fight, and how we can be real with each other no matter what.
+
+          You turn my ordinary days into magic, and even our little disagreements remind me how much you matter to me.
+        </div>
+        <div id="letterPage3" class="letter-page hidden-right">
+          I promise I’ll always be here—for every good morning, every goodnight, every new memory, and every silly dream.
+
+          I can’t wait for the day our calls turn into cuddles and you don’t have to miss me anymore.
+
+          Until then:
+          Know you’re loved beyond words, missed with every beat, and wanted in every future I dream. Forever and always—your Nishu.
+        </div>
+      </div>
+      <div class="letter-nav">
+        <button id="prevBtn" aria-label="Previous letter page" disabled>Previous</button>
+        <button id="nextBtn" aria-label="Next letter page">Next</button>
+      </div>
+      <div class="proposal-section" style="display:none;">
+        <h2>Will You Marry Me? 💍</h2>
+        <button id="yesBtn" class="proposal-btn" aria-label="Say yes to marry me">yes</button>
+      </div>
+    </section>
+  </div>
+  <div class="confetti-wrapper" aria-hidden="true"></div>
+  <script>
+    // Navigation and section display
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+    const sectionHeader = document.getElementById('sectionHeader');
+    function setActiveSection(name) {
+      sections.forEach(sec => { sec.classList.remove('active'); });
+      navLinks.forEach(link => { link.classList.remove('active'); });
+      const targetSection = document.getElementById(name);
+      if (targetSection) targetSection.classList.add('active');
+      const targetLink = [...navLinks].find(a => a.dataset.target === name);
+      if (targetLink) targetLink.classList.add('active');
+      const headerText = {
+        'journey': 'Our Journey',
+        'fight': 'How We Fight and Solve',
+        'apologies': 'Apologies',
+        'promise': 'Promise from Me',
+        'letter': 'My Letter for You'
+      };
+      sectionHeader.textContent = headerText[name] || 'Welcome';
+      if(name === 'letter') { showProposal(false); resetLetter(); }
+      else { showProposal(false); }
+    }
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = link.dataset.target;
+        setActiveSection(target);
+      });
+    });
+    setActiveSection('journey');
+    // Letter pages flip functionality
+    const pages = [
+      document.getElementById('letterPage1'),
+      document.getElementById('letterPage2'),
+      document.getElementById('letterPage3')
+    ];
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const proposalSection = document.querySelector('.proposal-section');
+    const yesBtn = document.getElementById('yesBtn');
+    let currentPageIndex = 0;
+    function updateLetterPages() {
+      pages.forEach((page, idx) => {
+        if (idx < currentPageIndex)      { page.className = 'letter-page hidden-left'; }
+        else if (idx === currentPageIndex) { page.className = 'letter-page visible'; }
+        else                              { page.className = 'letter-page hidden-right'; }
+      });
+      prevBtn.disabled = currentPageIndex === 0;
+      nextBtn.disabled = currentPageIndex === pages.length - 1;
+      if (currentPageIndex === pages.length - 1) { showProposal(true); }
+      else { showProposal(false); }
+    }
+    function showProposal(show) { proposalSection.style.display = show ? 'block' : 'none'; }
+    prevBtn.onclick = () => { if(currentPageIndex > 0) { currentPageIndex--; updateLetterPages(); }};
+    nextBtn.onclick = () => { if(currentPageIndex < pages.length - 1) { currentPageIndex++; updateLetterPages(); }};
+    function resetLetter() { currentPageIndex = 0; updateLetterPages(); }
+    updateLetterPages();
+    // Confetti animation on yes button click
+    function createConfettiPiece() {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti-piece');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 90%, 70%)`;
+      confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+      confetti.style.animationDelay = '0s';
+      confetti.style.top = '-10vh';
+      confetti.style.width = (6 + Math.random() * 8) + 'px';
+      confetti.style.height = (10 + Math.random() * 8) + 'px';
+      confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+      return confetti;
+    }
+    function showConfetti() {
+      const wrapper = document.querySelector('.confetti-wrapper');
+      wrapper.innerHTML = '';
+      wrapper.style.display = 'block';
+      for (let i = 0; i < 80; i++) {
+        const piece = createConfettiPiece();
+        piece.style.animationPlayState = 'running';
+        wrapper.appendChild(piece);
+      }
+      setTimeout(() => {
+        wrapper.style.display = 'none';
+        wrapper.innerHTML = '';
+      }, 6000);
+    }
+    yesBtn.addEventListener('click', () => {
+      alert('You said YES! I love you forever, Fuggan! 💖');
+      showConfetti();
+    });
+  </script>
+</body>
+</html>
